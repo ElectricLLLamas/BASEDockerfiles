@@ -3,6 +3,8 @@ LABEL author=23skdu@users.noreply.github.com
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-RUN set +x && apt update && apt -y upgrade && apt -y install vim sqlite3 netcat-traditional && apt clean && rm -rf /var/lib/apt/lists
-RUN pip3 install --no-cache-dir librosa pyvista ipygany hmmlearn imblearn keras torch dask[complete] numpy pandas scikit-learn scipy milvus pyarrow redis yfinance seaborn matplotlib plotly argparse requests sqlite-vss SQLAlchemy redis PyYAML ollama langchain langchain_core langchain_community langchain-redis agentops[langchain] langchain-milvus && pip3 cache purge
-CMD ["nc","-l", "8888"]
+RUN set +x && apt update && apt -y upgrade && apt-get clean
+
+RUN pip3 install --no-cache-dir librosa pyvista ipygany hmmlearn imblearn keras torch dask[complete] numpy pandas scikit-learn scipy pyarrow redis yfinance seaborn matplotlib plotly argparse requests beautifulsoup4 redis PyYAML ollama langchain langchain_core langchain_community langchain-redis agentops[langchain] langchain_postgres psycopg2 && pip3 cache purge
+
+CMD ["python","-c", "print('works')"]
